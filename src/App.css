@@ -1,0 +1,10 @@
+/* src/index.css */
+
+.perspective {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
