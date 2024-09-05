@@ -4,6 +4,7 @@ import HostelsInfo from '../dashboard/HostelsInfo';
 import BookingHistory from '../dashboard/booking/Booking';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import FavoriteHostels from '../dashboard/favorites/Favorites';
+import HostelHistory from '../dashboard/hostelHistory/HostelHistory';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('hostels');
@@ -21,6 +22,8 @@ function Dashboard() {
         return <BookingHistory />;
       case 'favorites':
         return <FavoriteHostels />;
+        case 'hostels-history':
+          return <HostelHistory/>;
       default:
         return <HostelsInfo />;
     }
@@ -57,6 +60,13 @@ function Dashboard() {
           >
             <FaHeart className="text-lg" />
             {isExpanded && <span className="ml-4 max-md:hidden">Favorite Hostels</span>}
+          </button>
+          <button
+            className={`flex items-center p-4 text-white w-full ${activeTab === 'favorites' ? 'bg-blue-600' : 'bg-gray-800'}`}
+            onClick={() => setActiveTab('hostels-history')}
+          >
+            <FaHeart className="text-lg" />
+            {isExpanded && <span className="ml-4 max-md:hidden"> Hostels History</span>}
           </button>
         </div>
       </div>

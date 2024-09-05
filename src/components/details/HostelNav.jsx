@@ -15,7 +15,7 @@ const Navbar = ({ name, location, contact }) => {
   const { selectedHostel } = useHostel();
   const [isOwner, setIsOwner] = useState(false);
   const [showBookingForm, setShowBookingForm] = useState(false);
-  const [bookingDetails, setBookingDetails] = useState({ userName: '', userContact: '' });
+  const [bookingDetails, setBookingDetails] = useState({ userName: '', userContact: '', startDate: '', endDate: '', });
   const [slotsFull, setSlotsFull] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const { headerSticky } = useSticky();
@@ -91,7 +91,13 @@ const Navbar = ({ name, location, contact }) => {
         userId: auth.currentUser.uid,
         status: 'pending',
         bookingDate: new Date(),
+        startDate: new Date(bookingDetails.startDate),  // Convert date strings to Date objects
+        endDate: new Date(bookingDetails.endDate),
       });
+  
+      // Logic to send notification to the owner could go here
+      // Example: addNotification({ownerId: selectedHostel.ownerId, ...otherDetails});
+  
       console.log('Booking successful');
       setShowBookingForm(false);
       setBookingSubmitted(true);
@@ -102,6 +108,7 @@ const Navbar = ({ name, location, contact }) => {
       alert('Booking failed, try again');
     }
   };
+  
 
   const toggleSlotsAvailability = async () => {
     const newSlotsFullStatus = !slotsFull;
@@ -160,51 +167,76 @@ if(login){
           <a href={`tel:${contact}`}>{contact}</a>
         </div>
         {isOwner ? (
-          <button onClick={toggleSlotsAvailability} className="px-4 py-2 bg-yellow-500 text-white rounded">
+          <button onClick={toggleSlotsAvailability} className="px-4 py-2 bg-hov hover:bg-hovDark text-text  rounded">
             {slotsFull ? 'Slots Full' : 'Slots Available'}
           </button>
         ) : (
           <button
           onClick={handleBookNow}
-          className="px-4 py-2 bg-green-500 text-white rounded"
+          className="px-4 py-2 bg-hov hover:bg-hovDark text-text  rounded"
           disabled={ slotsFull || bookingSubmitted}
         >
           {!userLoggedIn ? 'Log in to Book' : slotsFull ? 'Slots Not Available' : bookingSubmitted ? 'Booking Submitted' : 'Book Now'}
         </button>
         )}
-        {showBookingForm &&
-         (
-          <form onSubmit={handleBookingSubmit} className="absolute top-16 right-0 bg-white text-black p-4 rounded shadow-lg z-50">
-            <div className="mb-2">
-              <label className="block">Name</label>
-              <input
-                type="text"
-                name="userName"
-                value={bookingDetails.userName}
-                onChange={handleBookingChange}
-                className="w-full p-2 border border-gray-300 rounded"
-                required
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block">Contact Number</label>
-              <input
-                type="number"
-                name="userContact"
-                value={bookingDetails.userContact}
-                onChange={handleBookingChange}
-                className="w-full p-2 border border-gray-300 rounded"
-                required
-              />
-            </div>
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
-              Submit
-            </button>
-          </form>
-        )}
+        {showBookingForm && (
+  <form onSubmit={handleBookingSubmit} className="absolute top-16 right-0 bg-white text-black p-4 rounded shadow-lg z-50">
+    <div className="mb-2">
+      <p>Payments must be processed within an hour otherwise slots will be canceled</p>
+      <label className="block">Name</label>
+      <input
+        type="text"
+        name="userName"
+        value={bookingDetails.userName}
+        onChange={handleBookingChange}
+        className="w-full p-2 border border-gray-300 rounded"
+        required
+      />
+    </div>
+    <div className="mb-2">
+      <label className="block">Contact Number</label>
+      <input
+        type="number"
+        name="userContact"
+        value={bookingDetails.userContact}
+        onChange={handleBookingChange}
+        className="w-full p-2 border border-gray-300 rounded"
+        required
+      />
+    </div>
+    {/* Start Date */}
+    <div className="mb-2">
+      <label className="block">Start Date of Stay</label>
+      <input
+        type="date"
+        name="startDate"
+        value={bookingDetails.startDate}
+        onChange={handleBookingChange}
+        className="w-full p-2 border border-gray-300 rounded"
+        required
+      />
+    </div>
+    {/* End Date */}
+    <div className="mb-2">
+      <label className="block">End Date of Stay</label>
+      <input
+        type="date"
+        name="endDate"
+        value={bookingDetails.endDate}
+        onChange={handleBookingChange}
+        className="w-full p-2 border border-gray-300 rounded"
+        required
+      />
+    </div>
+    <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+      Submit
+    </button>
+  </form>
+)}
+
         <div className="flex items-center">
           {isOwner  && (
-            <button onClick={handleDeleteHostel} className="px-4 py-2 bg-red-500 text-white rounded">
+            <button onClick={handleDeleteHostel} className="px-4 py-2 bg-red-500 hover:bg-hovDark text-white rounded">
               Delete Hostel
             </button>
           )}

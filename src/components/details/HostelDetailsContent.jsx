@@ -59,10 +59,7 @@ const HostelDetailsContent = ({
             <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%]  mb-3 ">
               <FaBed /> <span>{selectedHostel.beds}</span>
             </p>
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3">
-              {" "}
-              <FaBath /> <span>{selectedHostel.bathroom}</span>
-            </p>
+         
             <p className="flex justify-start items-center space-x-4 w-[28%]  lg:w-[12%] mb-3">
               {" "}
               <FaBath /> <span>{selectedHostel.bathroom}</span>
@@ -103,9 +100,9 @@ const HostelDetailsContent = ({
           />
           <button
             onClick={handleAddComment}
-            className="px-4 py-2 bg-blue-500 text-white rounded mt-2"
+            className="px-4 py-2 bg-hov hover:bg-hovDark text-text  rounded mt-2"
           >
-            Add Recview
+            Add Review
           </button>
         </div>
         {comments.map((comment, index) => (

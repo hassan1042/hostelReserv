@@ -27,45 +27,45 @@ const SubmitTestimonial = () => {
   };
 
   return (
-    <section className="mt-10 bg-gray-100 p-6 rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 container mx-auto">Views About Our Website</h2>
+    <section className="mt-10 bg-gray-100 dark:bg-cardDark p-6 rounded-lg">
+      <h2 className="text-2xl font-bold mb-4 container mx-auto  text-textDark dark:text-text">Views About Our Website</h2>
       <form onSubmit={handleSubmit} className="space-y-4 container mx-auto">
         <div>
-          <label className="block text-gray-700 font-semibold">Message</label>
+          <label className="block text-gray-700  dark:text-gray-300 font-semibold">Message</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-2 border  border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
             required
           />
         </div>
         <div className='flex flex-wrap justify-between  items-center max-md:space-y-4 md:space-x-8'>
         <div className='w-full md:w-[40%]' >
-          <label className="block text-gray-700 font-semibold">Name</label>
+          <label className="block text-gray-700 dark:text-gray-300 font-semibold">Name</label>
           <input
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-2 border  border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
             required
           />
         </div>
         <div className='w-full md:w-[40%] '>
-          <label className="block text-gray-700 font-semibold">Date of Stay</label>
+          <label className="block text-gray-700 dark:text-gray-300 font-semibold">Date of Stay</label>
           <input
             type="date"
             name="dateOfStay"
             value={formData.dateOfStay}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-2 border border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
             required
           />
         </div>
         </div>
       <div className=' w-full  text-center'>
-      <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded ">
+      <button type="submit" className="px-4 py-2 bg-hov hover:bg-hovDark text-white rounded ">
           Submit Testimonial
         </button>
       </div>

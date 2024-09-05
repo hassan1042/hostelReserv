@@ -51,16 +51,16 @@ const CountUpSection = () => {
   ];
 
   return (
-    <section ref={ref} className="my-16 text-center bg-gray-100 py-12 px-2">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section ref={ref} className="my-16 text-center bg-gray-100 dark:bg-slate-900  py-12 px-2">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 ">
         {stats.map((stat) => (
-          <div key={stat.id} className="bg-white p-8 rounded-lg shadow-lg">
+          <div key={stat.id} className="bg-white dark:bg-cardDark p-8 rounded-lg shadow-lg">
             <h3 className="text-4xl font-bold text-blue-600">
               {triggered && (
                 <CountUp start={0} end={stat.end} suffix={stat.suffix} duration={2.5} />
               )}
             </h3>
-            <p className="text-lg mt-2 text-gray-700">{stat.title}</p>
+            <p className="text-lg mt-2 text-gray-700 dark:text-gray-200">{stat.title}</p>
           </div>
         ))}
       </div>

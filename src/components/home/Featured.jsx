@@ -67,7 +67,7 @@ function Featured() {
      data-aos="fade-right"
      data-aos-duration="3000"
      className="my-10  container mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Featured Hostels</h2>
+      <h2 className="text-2xl font-bold mb-4  text-textDark dark:text-text">Featured Hostels</h2>
       {/* <Slider {...settings}>
         {featuredHostels.map((hostel) => (
           <div key={hostel.id} className="px-2">

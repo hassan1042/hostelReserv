@@ -8,13 +8,12 @@ import { FaBars } from 'react-icons/fa';
 import Notifications from './Notifications';
 
 import DarkMode from './DarkMode';
+import Search from './Search';
 
 const Navbar = () => {
   const { headerSticky } = useSticky();
   const [user, setUser] = useState(null);
-  const { searchTerm, setSearchTerm, filterType, setFilterType, setSearchResults } = useSearch();
   const [showMenu, setShowMenu] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
@@ -32,11 +31,7 @@ const Navbar = () => {
     }
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearchResults([]); // Clear previous results
-    navigate('/search-results');
-  };
+  
   const handleMenu = () => {
     setShowMenu(!showMenu);
   }
@@ -49,38 +44,14 @@ const Navbar = () => {
         <div className="flex items-center max-lg:justify-end">
         {/** Menu */}
          <div className={`lg:flex   items-center ${ !showMenu ? 'hidden' : 'flex flex-col space-y-4 justify-between py-10 w-full h-auto' } lg:space-x-8`}>
-         <form onSubmit={handleSearch} className="mr-4 flex items-center flex-wrap max-lg:justify-center max-lg:space-y-5">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder={
-                filterType === 'name' 
-                ? 'Search by name' 
-                : filterType === 'beds' 
-                ? 'Min number of beds' 
-                : 'Search by address'
-              }
-              className="p-2 rounded max-lg:w-[87%] "
-            />
-            <select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value)}
-              className="p-2 rounded ml-2 max-lg:w-[70%]"
-            >
-              <option value="name">Name</option>
-              <option value="beds">Number of Beds</option>
-              <option value="address">Address</option>
-            </select>
-            <button type="submit" className="p-2 bg-blue-500 text-white rounded ml-2 ">Search</button>
-          </form>
+        <Search/>
           {/* <NavLink to="/" className="text-white mx-2">Home</NavLink> */}
-          <NavLink to="/register-hostel" className="text-white mx-2 ">Register your Hostel</NavLink>
-          <NavLink to="/dashboard" className="text-white mx-2 ">Dashboard</NavLink>
+          <NavLink to="/register-hostel" className= "text-text mx-2 hover:text-hov ">Register your Hostel</NavLink>
+          <NavLink to="/dashboard" className="text-text   hover:text-hov mx-2 ">Dashboard</NavLink>
           {user && (
             <button
               onClick={handleLogout}
-              className="text-white mx-2"
+              className="text-text   hover:text-hov mx-2"
             >
               Logout
             </button>

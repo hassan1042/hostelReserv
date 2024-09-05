@@ -11,7 +11,7 @@ function Card({hostels}) {
     const navigate = useNavigate();
       // Slick Slider Settings
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -41,27 +41,27 @@ function Card({hostels}) {
     <Slider {...settings}>
     {hostels.map((hostel) => (
       <div key={hostel.id} className="px-2 hover:-translate-y-[10px] transition-all duration-200 ">
-        <div className="border rounded-lg shadow-lg overflow-hidden cursor-pointer" onClick={() => handleCardClick(hostel)}>
+        <div className="border rounded-lg shadow-lg overflow-hidden cursor-pointer  dark:bg-cardDark" onClick={() => handleCardClick(hostel)}>
           {hostel.images && (
             <img src={hostel.images[0]} alt={hostel.name} className="w-full h-48 object-cover" />
           )}
           <div className="p-4">
           <div className='flex justify-between items-center w-full '>
-          <h3 className="text-xl font-semibold">{hostel.name}</h3>
-          <h2 className="text-xl font-normal">Rs:{hostel.price}</h2>
+          <h3 className="text-xl font-semibold text-textDark dark:text-text">{hostel.name}</h3>
+          <h2 className="text-xl font-normal text-textDark dark:text-text">Rs:{hostel.price}</h2>
 
           </div>
-          <p className='text-gray-600 my-3 text-justify italic h-16 overflow-hidden'>{hostel.description}</p>
+          <p className='text-gray-600 dark:text-gray-200 my-3 text-justify italic h-16 overflow-hidden'>{hostel.description}</p>
           {/** loc Bath Bed */}
         <div className='flex justify-between items-center flex-wrap my-5 text-gray-600 '>
         <p className="flex justify-start items-center space-x-2">
-            <i><FaMapMarkerAlt/> </i>   <span>{hostel.location}</span>
+            <i className='text-icons dark:text-iconsDark'><FaMapMarkerAlt/> </i>   <span className=' text-textDark dark:text-text'>{hostel.location}</span>
             </p>
             <p className=" flex justify-start items-center space-x-2">
-            <i><FaBed/> </i>   <span>{hostel.beds}</span>
+            <i className='text-icons dark:text-iconsDark'><FaBed/> </i>   <span className=' text-textDark dark:text-text'>{hostel.beds}</span>
             </p>
             <p className=" flex justify-start items-center space-x-2">
-            <i><FaBath/></i>    <span>{hostel.bathroom}</span>
+            <i className='text-icons dark:text-iconsDark'><FaBath/></i>    <span className=' text-textDark dark:text-text'>{hostel.bathroom}</span>
             </p>
         </div>
         <p className='text-red-300 my-3 text-justify font-thin h-8'>Note : {hostel.instruction}</p>

@@ -35,7 +35,7 @@ function LatestHostels() {
       data-aos-duration="3000"
       className="my-10 container mx-auto"
     >
-      <h2 className="text-2xl font-bold mb-4">Latest Hostels</h2>
+      <h2 className="text-2xl font-bold mb-4  text-textDark dark:text-text">Latest Hostels</h2>
 
       <Card hostels={latestHostels} />
     </section>

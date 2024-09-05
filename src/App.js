@@ -21,6 +21,8 @@ function App() {
       once: false, // Animation will occur only once when scrolling down
     });
   }, []);
+
+  
   return (
     <div className='overflow-hidden'>
     <AuthProvider>

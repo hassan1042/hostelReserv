@@ -38,9 +38,9 @@ const BookingHistory = () => {
               ) : (
                 <p>Booking Date: Not available</p>
               )}
-              <p>Status : {
-                booking.status === 'pending' ? 'Pending' : 'Confirmed'
-              }
+              <p>Status : 
+                { booking.status }
+              
                 </p>
             </li>
           ))}

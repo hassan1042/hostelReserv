@@ -15,6 +15,7 @@ import LatestHostels from './RecentHostels';
 import Card from '../common/Card';
 import './home.css';
 import WA from './WA';
+import LoadingScreen from '../../components/common/loading/Loading';
 
 
 
@@ -43,14 +44,15 @@ const Home = () => {
 
 
   return (
-    <div className="relative bg-neutral-50 dark:bg-black">
+    <div className="relative bg-bgPrimary dark:bg-bgPrimaryDark">
       {loading && (
         <div className=" inset-0 flex justify-center items-center  z-50 fixed h-full w-full bg-gray-200">
-          <ClipLoader size={50} color={"#123abc"} loading={loading}  />
+          {/* <ClipLoader size={50} color={"#123abc"} loading={loading}  /> */}
+          <LoadingScreen/>
         </div>
       )}
 
-      <div className=" mx-auto mb-10">
+      <div className=" mx-auto pb-10">
         {/* Hero Section */}
         <Hero />
         {/* Popular Hostels */}
@@ -59,7 +61,7 @@ const Home = () => {
      data-aos-duration="3000"
      dara-aos-once="true"
          className="my-10 container mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Popular Hostels</h2>
+          <h2 className="text-2xl font-bold mb-4 dark:text-text text-textDark">Popular Hostels</h2>
           {!loading && (
     <Card hostels={hostels}/>
           )}
@@ -81,8 +83,8 @@ const Home = () => {
         {/* Newsletter Signup */}
         <NewsLetter />
       </div>
-      <div className=' absolute top-96 right-10 p-16 bg-400'>
-   
+        {/* Whatsapp icon */}
+      <div className=' absolute top-96 right-10 p-16'>
        <WA/>                        
       </div>
     </div>

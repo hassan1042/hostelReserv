@@ -60,8 +60,8 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="my-10 bg-gray-100 p-6 ">
-      <h2 className="text-2xl font-bold mb-4">What Our Users Say</h2>
+    <section className="my-10  p-6 ">
+      <h2 className="text-2xl font-bold mb-4  text-textDark dark:text-text">What Our Users Say</h2>
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <ClipLoader size={50} color={"#123abc"} loading={loading} />
@@ -72,15 +72,15 @@ const Testimonials = () => {
           {testimonials.map(({ id, message, username, dateOfStay }) => (
             <div
               key={id}
-              className="bg-white  p-6 rounded-lg shadow-md text-center h-56 cursor-pointer"
+              className="bg-white dark:bg-cardDark  p-6 rounded-lg shadow-md text-center h-56 cursor-pointer"
               onClick={() => handleTestimonialClick({ message, username, dateOfStay })}
             >
-              <div className="relative h-[80%] bg-gray-200 p-4 flex items-center justify-center ">
-                <FaQuoteLeft className="absolute top-0 left-2 text-gray-500 text-3xl" />
-                <p className="text-xl text-gray-700 mx-4 text-center">{message}</p>
-                <FaQuoteRight className="absolute bottom-0 right-2 text-gray-500 text-3xl" />
+              <div className="relative h-[80%]  p-4 flex items-center justify-center ">
+                <FaQuoteLeft className="absolute top-0 left-2 text-icons dark:text-iconsDark text-3xl" />
+                <p className="text-xl text-gray-700 mx-4 text-center  dark:text-text">{message}</p>
+                <FaQuoteRight className="absolute bottom-0 right-2 text-icons dark:text-iconsDark text-3xl" />
               </div>
-              <p className="text-gray-600 mt-2">- {username}</p>
+              <p className="text-gray-600 dark:text-gray-200 mt-2">- {username}</p>
               <p className="text-gray-400 text-sm">{new Date(dateOfStay).toLocaleDateString()}</p>
             </div>
           ))}
@@ -97,9 +97,9 @@ const Testimonials = () => {
             </button>
             <h3 className="text-2xl font-bold mb-4">Testimonial Details</h3>
             <div className="relative mb-4">
-              <FaQuoteLeft className="absolute top-0 left-4 text-gray-500 text-4xl" />
+              <FaQuoteLeft className="absolute top-0 left-4  text-4xl text-icons dark:text-iconsDark" />
               <p className="text-xl text-gray-700 mx-8 text-center">{selectedTestimonial.message}</p>
-              <FaQuoteRight className="absolute bottom-0 right-4 text-gray-500 text-4xl" />
+              <FaQuoteRight className="absolute bottom-0 right-4  text-4xl text-icons dark:text-iconsDark" />
             </div>
             <p className="text-gray-600 font-semibold">- {selectedTestimonial.username}</p>
             <p className="text-gray-400 text-sm">{new Date(selectedTestimonial.dateOfStay).toLocaleDateString()}</p>

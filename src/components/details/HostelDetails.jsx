@@ -6,6 +6,7 @@ import { ClipLoader } from 'react-spinners';
 import Navbar from './HostelNav';
 import ImageSlider from './HostelSlider';
 import HostelDetailsContent from './HostelDetailsContent';
+import LoadingScreen from '../common/loading/Loading';
 
 
 const HostelDetails = () => {
@@ -53,7 +54,8 @@ const HostelDetails = () => {
     <>
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <ClipLoader size={50} color={"#123abc"} loading={loading} />
+          {/* <ClipLoader size={50} color={"#123abc"} loading={loading} /> */}
+          <LoadingScreen/>
         </div>
       ) : (
         <div className="relative h-auto">

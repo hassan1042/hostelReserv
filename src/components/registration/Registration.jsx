@@ -113,15 +113,16 @@ const RegisterHostel = () => {
   }
 
   return (
-    <div className="container mx-auto my-10 ">
-      <h1 className="text-2xl font-bold mb-4 max-md:text-center">Register your Hostel</h1>
+  <div className='dark:bg-cardDark py-10 '>
+      <div className="container mx-auto   ">
+      <h1 className="text-2xl font-bold mb-4 max-md:text-center  text-textDark dark:text-text">Register your Hostel</h1>
       {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
 
 
 <div className='flex flex-wrap justify-between items-center'>
 <div className='w-[90%] max-md:mx-auto md:w-[30%]'>
-  <label className="block text-gray-700">Hostel Name</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Hostel Name</label>
   <input
     type="text"
     name="name"
@@ -131,7 +132,7 @@ const RegisterHostel = () => {
   />
 </div>
 <div className='w-[90%] max-md:mx-auto lg:w-[60%]'>
-  <label className="block text-gray-700">Address</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Address</label>
   <input
     type="text"
     name="location"
@@ -145,7 +146,7 @@ const RegisterHostel = () => {
 {/** Beds Bathrooms price */}
 <div className='flex flex-wrap justify-between items-center'>
 <div className='max-md:flex max-md:items-center max-md:w-[90%] max-md:mx-auto'>
-  <label className="block text-gray-700 max-md:w-[30%] "><span className='max-md:hidden'>Number</span> <span className='md:hidden'>No</span> of Beds</label>
+  <label className="block text-gray-700 max-md:w-[30%] dark:text-neutral-200 "><span className='max-md:hidden'>Number</span> <span className='md:hidden'>No</span> of Beds</label>
   <input
     type="number"
     name="beds"
@@ -157,7 +158,7 @@ const RegisterHostel = () => {
 
 
 <div className='max-md:w-[90%] max-md:mx-auto max-md:my-3'>
-  <label className="block text-gray-700">Bathroom</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Bathroom</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -186,7 +187,7 @@ const RegisterHostel = () => {
 
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto max-md:my-3'>
-  <label className="block text-gray-700">Wifi</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Wifi</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -213,7 +214,7 @@ const RegisterHostel = () => {
   </div>
 </div>
 <div className='max-md:flex max-md:items-center max-md:w-[90%] max-md:mx-auto'>
-  <label className="block text-gray-700 max-md:text-sm max-md:w-[40%]">Price per Month</label>
+  <label className="block text-gray-700 max-md:text-sm max-md:w-[40%] dark:text-neutral-200">Price per Month</label>
   <input
     type="number"
     name="price"
@@ -225,7 +226,7 @@ const RegisterHostel = () => {
 
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto'>
-  <label className="block text-gray-700">Description</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Description</label>
   <textarea
     name="description"
     value={hostel.description}
@@ -237,7 +238,7 @@ const RegisterHostel = () => {
 <div className='flex flex-wrap justify-between items-center'>
   
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Upload Images</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Upload Images</label>
   <input
     type="file"
     name="images"
@@ -247,7 +248,7 @@ const RegisterHostel = () => {
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Upload Video</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Upload Video</label>
   <input
     type="file"
     name="video"
@@ -256,7 +257,7 @@ const RegisterHostel = () => {
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Contact Number (WhatsApp)</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Contact Number (WhatsApp)</label>
   <input
     type="number"
     name="contact"
@@ -269,7 +270,7 @@ const RegisterHostel = () => {
 
 
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Booking Information</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Booking Information</label>
   <input
     type="text"
     name="booking"
@@ -279,7 +280,7 @@ const RegisterHostel = () => {
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Special Instructions</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Special Instructions</label>
   <input
     type="text"
     name="instruction"
@@ -290,7 +291,7 @@ const RegisterHostel = () => {
 </div>
 <div className="flex space-x-4 max-md:w-[90%] max-md:mx-auto my-3">
           <div>
-            <label className="block text-gray-700">Latitude</label>
+            <label className="block text-gray-700 dark:text-neutral-200">Latitude</label>
             <input
               type="number"
               name="lat"
@@ -300,7 +301,7 @@ const RegisterHostel = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700">Longitude</label>
+            <label className="block text-gray-700 dark:text-neutral-200">Longitude</label>
             <input
               type="number"
               name="lng"
@@ -313,7 +314,7 @@ const RegisterHostel = () => {
 
 <div className='flex flex-wrap justify-between items-center'>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Mosque</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Mosque</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -340,7 +341,7 @@ const RegisterHostel = () => {
   </div>
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Ground</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Ground</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -367,7 +368,7 @@ const RegisterHostel = () => {
   </div>
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Mess</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Mess</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -394,7 +395,7 @@ const RegisterHostel = () => {
   </div>
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
-  <label className="block text-gray-700">Canteen</label>
+  <label className="block text-gray-700 dark:text-neutral-200">Canteen</label>
   <div className="flex space-x-4">
     <label>
       <input
@@ -410,7 +411,7 @@ const RegisterHostel = () => {
     <label>
       <input
         type="radio"
-        name="mess"
+        name="canteen"
         value="unavailable"
         checked={hostel.canteen === 'unavailable'}
         onChange={handleChange}
@@ -425,7 +426,7 @@ const RegisterHostel = () => {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded flex items-center mx-auto"
+          className="px-4 py-2 bg-hov hover:bg-hovDark text-text rounded flex items-center mx-auto"
           disabled={loading} // Disable button during submission
         >
           {loading ? <span className="spinner-border spinner-border-sm mr-2 text-gray-600 bg-gray-600" ></span> : null}
@@ -440,6 +441,7 @@ const RegisterHostel = () => {
         </Modal>
       )}
     </div>
+  </div>
   );
 };
 
