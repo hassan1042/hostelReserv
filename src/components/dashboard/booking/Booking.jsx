@@ -26,28 +26,44 @@ const BookingHistory = () => {
   }, [currentUser]);
 
   return (
-    <div className="container mx-auto my-10 min-h-screen">
+    <div className="container mx-auto my-10 min-h-screen dark:text-text">
       <h1 className="text-2xl font-bold mb-4">Your Booking History</h1>
       {bookings.length > 0 ? (
-        <ul className="space-y-4">
-          {bookings.map((booking) => (
-            <li key={booking.id} className="p-4 border border-gray-300 rounded">
-              <p>Hostel Name: {booking.name}</p>
-              {booking.bookingDate ? (
-                <p>Booking Date: {new Date(booking.bookingDate.seconds * 1000).toLocaleDateString()}</p>
-              ) : (
-                <p>Booking Date: Not available</p>
-              )}
-              <p>Status : 
-                { booking.status }
-              
-                </p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>You haven't made any bookings yet.</p>
-      )}
+  <div className="space-y-6">
+    {bookings.map((booking) => (
+      <div key={booking.id} className="bg-gray-50 shadow-md rounded-lg p-6 border border-gray-200">
+        <h3 className="text-xl font-semibold mb-2">Hostel Name: {booking.name}</h3>
+
+        {booking.bookingDate ? (
+          <p className="text-gray-600">
+            <span className="font-medium">Booking Date:</span>{' '}
+            {new Date(booking.bookingDate.seconds * 1000).toLocaleDateString()}
+          </p>
+        ) : (
+          <p className="text-gray-500">Booking Date: Not available</p>
+        )}
+
+        <p className="text-gray-600">
+          <span className="font-medium">Status:</span>{' '}
+          <span
+            className={`px-2 py-1 rounded-md ${
+              booking.status === 'accepted'
+                ? 'bg-green-200 text-green-700'
+                : booking.status === 'rejected'
+                ? 'bg-red-200 text-red-700'
+                : 'bg-yellow-200 text-yellow-700'
+            }`}
+          >
+            {booking.status}
+          </span>
+        </p>
+      </div>
+    ))}
+  </div>
+) : (
+  <p className="text-gray-500">You haven't made any bookings yet.</p>
+)}
+
     </div>
   );
 };

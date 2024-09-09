@@ -9,11 +9,13 @@ import Notifications from './Notifications';
 
 import DarkMode from './DarkMode';
 import Search from './Search';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Navbar = () => {
   const { headerSticky } = useSticky();
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState();
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const auth = getAuth();
@@ -48,6 +50,11 @@ const Navbar = () => {
           {/* <NavLink to="/" className="text-white mx-2">Home</NavLink> */}
           <NavLink to="/register-hostel" className= "text-text mx-2 hover:text-hov ">Register your Hostel</NavLink>
           <NavLink to="/dashboard" className="text-text   hover:text-hov mx-2 ">Dashboard</NavLink>
+          {
+            currentUser && 
+          <NavLink to="/messages" className="text-text   hover:text-hov mx-2 ">Messages</NavLink>
+
+          }
           {user && (
             <button
               onClick={handleLogout}

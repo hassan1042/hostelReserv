@@ -1,11 +1,10 @@
 import React from "react";
 import Comment from "./Comment";
-import { FaBath, FaBed, FaMosque } from "react-icons/fa";
 import DynamicMap from "./Map";
-import { CiWifiOn } from "react-icons/ci";
-import { IoFastFood } from "react-icons/io5";
-import { MdStadium } from "react-icons/md";
 import AddToFavorites from "../dashboard/favorites/AddFavorites";
+import Amenities from "./Amenities";
+
+
 
 const HostelDetailsContent = ({
   selectedHostel,
@@ -24,13 +23,18 @@ const HostelDetailsContent = ({
             <AddToFavorites id={selectedHostel.id}/>
       </div>
 
-      <div className="flex flex-col justify-center mx-auto text-center   my-5 italic text-xl">
-        <p className=" font-bold text-xl lg:text-2xl my-3">
+     <div className="flex justify-evenly items-center flex-wrap">
+     <div className="flex flex-col justify-center    my-5 italic text-xl">
+        <p className=" font-bold text-xl lg:text-2xl my-3 text-center" >
           {" "}
           Hostel Description
         </p>
         <p className=" font-semibold"> {selectedHostel.description}</p>
+
       </div>
+      <a href={selectedHostel.video} rel="noopener noreferrer" className='text-xl text-white italic'  >Watch a video</a>
+     </div>
+
 {/** booking and instructions */}
     <div className="flex flex-wrap justify-between items-center my-5">
     <div className="flex flex-col justify-center mx-auto text-center   my-5 italic text-xl">
@@ -53,37 +57,9 @@ const HostelDetailsContent = ({
         </div>
     </div>
 
-        <div className=" border-y-neutral-300 border-y-[1px] py-5 text-xl  max-lg:space-y-5 max-lg:mx-auto max-lg:my-3 ">
-          <p className="text-2xl font-bold justify-start mb-5 ">Amenities</p>
-          <div className="flex justify-between items-center flex-wrap" >
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%]  mb-3 ">
-              <FaBed /> <span>{selectedHostel.beds}</span>
-            </p>
          
-            <p className="flex justify-start items-center space-x-4 w-[28%]  lg:w-[12%] mb-3">
-              {" "}
-              <FaBath /> <span>{selectedHostel.bathroom}</span>
-            </p>
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3">
-              {" "}
-              <CiWifiOn /> <span>{selectedHostel.wifi === 'available' ? 'Yes' : 'No'}</span>
-            </p>
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3">
-              {" "}
-              <FaMosque /><span>{selectedHostel.mosque === 'available' ? 'Yes' : 'No'}</span>
-            </p>
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3">
-              {" "}
-              <IoFastFood /><span>{selectedHostel.canteen === 'available' ? 'Yes' : 'No'}</span>
-            </p>
-            <p className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3 ">
-              {" "}
-              <MdStadium /><span>{selectedHostel.ground === 'available' ? 'Yes' : 'No'}</span>
-            </p>
-          
-          </div>
       
-      </div>
+    <Amenities/>
       {/* <div className="my-10">
         <DynamicMap lat={selectedHostel.lat} lng={selectedHostel.lng} />
       </div> */}

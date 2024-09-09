@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useHostel } from '../../contexts/HostelContext';
 import Comment from './Comment';
 import { addComment, deleteComment, fetchComments } from '../../services/comments';
-import { ClipLoader } from 'react-spinners';
 import Navbar from './HostelNav';
 import ImageSlider from './HostelSlider';
 import HostelDetailsContent from './HostelDetailsContent';
 import LoadingScreen from '../common/loading/Loading';
+import { useAuth } from '../../contexts/AuthContext';
+import MessageInput from '../chat/MessageInput';
 
 
 const HostelDetails = () => {
   const { selectedHostel } = useHostel();
+  const { currentUser } = useAuth();
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  
   
 
   useEffect(() => {
@@ -85,6 +88,7 @@ const HostelDetails = () => {
                 className="w-full md:w-[90%] mx-auto h-96 object-cover"
               />
             )}
+
             <HostelDetailsContent 
               selectedHostel={selectedHostel} 
               comment={comment} 
@@ -92,7 +96,15 @@ const HostelDetails = () => {
               handleAddComment={handleAddComment} 
               comments={comments} 
               handleDeleteComment={handleDeleteComment}
-            />               
+            />  
+          {
+  currentUser && currentUser.uid !== selectedHostel.ownerId &&
+  <MessageInput 
+    userId={currentUser.uid} 
+    selectedHostel={selectedHostel}  // Pass selectedHostel as prop
+  />
+}
+
           </div>
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>

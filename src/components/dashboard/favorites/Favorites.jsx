@@ -23,11 +23,10 @@ const FavoriteHostels = () => {
   }, [auth]);
 
   return (
-    <div className="container mx-auto my-10 min-h-screen">
+    <div className="container mx-auto my-10 min-h-screen dark:text-text">
       <h1 className="text-2xl font-bold mb-4">Your Favorite Hostels</h1>
       {favoriteHostels.length > 0 ? (
-        <div className="flex flex-wrap justify-between items-center">
-       
+        <div className="flex flex-wrap justify-between items-center w-[40%]">       
           {
             <CardSliderless hostels={favoriteHostels}/>
           }

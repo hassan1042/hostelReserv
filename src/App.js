@@ -13,6 +13,8 @@ import './App.css'
 import { useEffect } from 'react';
 import { DarkModeProvider } from './contexts/DarkModeContext';
 import Dashboard from './components/header/Dashboard';
+import OwnerMessages from './components/chat/OwnerMessages';
+import Chats from './components/chat/Chats';
 
 function App() {
   useEffect(() => {
@@ -37,6 +39,7 @@ function App() {
       <Route path="/hostel-details" element={<HostelDetails />} />
       <Route path="/search-results" element={<SearchResults />} />
       <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/messages" element={<Chats/>} />
       </Route>
     </Routes>
    </Router>
