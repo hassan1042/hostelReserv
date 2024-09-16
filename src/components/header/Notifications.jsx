@@ -102,7 +102,7 @@ const Notifications = () => {
       <div className="relative">
         <FaBell
           onClick={() => setShowNotifications(!showNotifications)}
-          className={`text-2xl cursor-pointer hover:text-hov ${notifications.length > 0 ? 'text-yellow-500' : 'text-text'}`}
+          className={`text-2xl cursor-pointer hover:text-hov ${notifications.length > 0 ? 'text-yellow-500' : 'text-text'} hover:text-hovLinks`}
         />
         {showNotifications && (
           <div className="absolute right-0 mt-2 w-[20rem] md:w-[30rem] bg-white text-black p-4 pb-10 z-50 rounded shadow-lg">

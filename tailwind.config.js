@@ -8,7 +8,13 @@ module.exports = {
     extend: {
       colors: {
         'bgPrimary': '#F7F8FA',
+        'bgUI': 'rgb(15 118 110)',
+        'bgUIDark': '#1e1e1e',
+        'bgInputsDark': 'rgb(55 65 81)',
+        'bgSidebar': 'rgb(13 148 136)',
+        'bgSidebarDark': 'rgb(4 47 46)',
         'bgPrimaryDark': '#121212',
+        'hovLinks': 'rgb(153 246 228)',
          'hov': '#008080',
          'hovDark' : '#00ADB5',
          'card' : '#FFD5C2',

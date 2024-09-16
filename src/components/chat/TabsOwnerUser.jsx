@@ -9,8 +9,8 @@ function TabsOwnerUser({setActiveTab, activeTab, }) {
         `
         px-4 py-2 mx-2 rounded-lg ${
         activeTab === 'owner'
-          ? 'bg-blue-500 text-white'
-          : 'bg-gray-200 text-gray-700'
+          ? 'bg-blue-500 text-white dark:bg-blue-900'
+          : 'bg-gray-200 text-gray-700 dark:bg-gray-500 dark:text-text hover:bg-gray-400'
       } `
       
       }
@@ -22,8 +22,8 @@ function TabsOwnerUser({setActiveTab, activeTab, }) {
       className={`
       px-4 py-2 mx-2 rounded-lg ${
         activeTab === 'user'
-          ? 'bg-blue-500 text-white'
-          : 'bg-gray-200 text-gray-700'
+          ? 'bg-blue-500 text-white dark:bg-blue-900'
+          : 'bg-gray-200 text-gray-700  dark:bg-gray-500 dark:text-text hover:bg-gray-400'
       
       }`}
     >

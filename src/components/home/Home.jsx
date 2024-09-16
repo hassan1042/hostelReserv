@@ -52,7 +52,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className=" mx-auto pb-10">
+      <div className=" mx-auto pb-5">
         {/* Hero Section */}
         <Hero />
         {/* Popular Hostels */}

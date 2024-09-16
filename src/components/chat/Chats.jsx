@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import { collection, query, where, onSnapshot,  } from 'firebase/firestore';
 import { firestore } from '../../firebase/Firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import ChatMessageInput from './MessageInputChat';
 import SelectedChat from './SelectedChat';
 import TabsOwnerUser from './TabsOwnerUser';
 import ChatSelector from './ChatSelector';
+import ScrollToTopOnMount from '../common/scrollToTop/ScrollToTop';
 
 const Chats = () => {
   const [ownerMessages, setOwnerMessages] = useState([]);
@@ -57,15 +58,16 @@ const Chats = () => {
  
 
   return (
-    <>
+    <div className='dark:bg-bgPrimaryDark py-5'>
+    <ScrollToTopOnMount/>
       <TabsOwnerUser activeTab={activeTab} setActiveTab={setActiveTab}/>
-    <div className="chats-container flex p-6 bg-gray-50 min-h-screen">
+    <div className="chats-container flex space-x-4 p-6 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Sidebar for chat tabs */}
 
-     <ChatSelector activeTab={activeTab} ownerMessages={ownerMessages} setSelectedChat={setSelectedChat} userMessages={userMessages} selectedChat={selectedChat} /> 
+<ChatSelector  activeTab={activeTab} ownerMessages={ownerMessages} setSelectedChat={setSelectedChat} userMessages={userMessages} selectedChat={selectedChat} /> 
 
       {/* Chat content area */}
-      <div className="chat-content w-3/4 p-6 space-y-4 bg-white rounded-lg shadow-lg">
+      <div className="chat-content ms-auto  w-3/4 p-6 space-y-4 bg-white dark:bg-slate-900 dark:text-text rounded-lg shadow-lg">
         {selectedChat ? (
           <>
          <SelectedChat  selectedChat={selectedChat} currentUser={currentUser} setSelectedChat={setSelectedChat} />
@@ -84,7 +86,7 @@ const Chats = () => {
         )}
       </div>
     </div>
-    </>
+    </div>
   );
 };
 

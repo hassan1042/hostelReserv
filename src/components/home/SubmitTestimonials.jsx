@@ -36,7 +36,7 @@ const SubmitTestimonial = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-2 border  border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
+            className="w-full p-2 border  border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
             required
           />
         </div>
@@ -48,7 +48,7 @@ const SubmitTestimonial = () => {
             name="username"
             value={formData.username}
             onChange={handleChange}
-            className="w-full p-2 border  border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
+            className="w-full p-2 border  border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
             required
           />
         </div>
@@ -59,7 +59,7 @@ const SubmitTestimonial = () => {
             name="dateOfStay"
             value={formData.dateOfStay}
             onChange={handleChange}
-            className="w-full p-2 border border-icons dark:bg-slate-700 dark:text-white rounded mt-1"
+            className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
             required
           />
         </div>

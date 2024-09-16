@@ -14,7 +14,7 @@ const handleCardClick = (hostel) => {
   return (
  <>
        {hostels.map((hostel) => (
-        <div key={hostel.id} className="px-2 hover:-translate-y-[10px] transition-all duration-200 ">
+        <div key={hostel.id} className="px-2 hover:-translate-y-[10px] transition-all duration-200 mb-3">
           <div className="border rounded-lg shadow-lg overflow-hidden cursor-pointer" onClick={() => handleCardClick(hostel)}>
             {hostel.images && (
               <img src={hostel.images[0]} alt={hostel.name} className="w-full h-48 object-cover" />

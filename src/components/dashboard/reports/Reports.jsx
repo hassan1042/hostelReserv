@@ -103,7 +103,7 @@ const BookingSummaryReport = () => {
       {/* Date Range Picker */}
       <div className="mb-4">
         <label className="block font-semibold mb-2">Select Date Range</label>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -120,7 +120,7 @@ const BookingSummaryReport = () => {
       </div>
 
       {/* Hostel Selection */}
-      <div className="mb-4">
+      <div className="mb-4 max-sm:w-[80%]">
         <label className="block font-semibold mb-2">Select Hostel (Optional)</label>
         <select
           value={selectedHostel}
@@ -137,7 +137,7 @@ const BookingSummaryReport = () => {
       </div>
 
       {/* Tabs for Booking Status */}
-      <div className="flex space-x-4 mb-4">
+      <div className="flex space-x-4 mb-4 flex-wrap space-y-4">
         {['All', 'Pending', 'Accepted', 'Rejected'].map((tab) => (
           <button
             key={tab}
@@ -152,19 +152,19 @@ const BookingSummaryReport = () => {
       {/* Actions */}
       <button
         onClick={handleGenerateReport}
-        className="bg-blue-500 dark:bg-blue-700 text-white px-4 py-2 rounded-md mr-4"
+        className="bg-blue-500 dark:bg-blue-900 text-white px-4 py-2 rounded-md mr-4 mb-3"
       >
         Generate Report
       </button>
       <button
         onClick={handleDownloadPDF}
-        className="bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded-md mr-4"
+        className="bg-green-500 dark:bg-green-900 text-white px-4 py-2 rounded-md mr-4 mb-3"
       >
         Download PDF
       </button>
       <button
         onClick={handlePrint}
-        className="bg-yellow-500 dark:bg-yellow-700 text-white px-4 py-2 rounded-md"
+        className="bg-yellow-500 dark:bg-yellow-900 text-white px-4 py-2 rounded-md mb-3"
       >
         Print Report
       </button>

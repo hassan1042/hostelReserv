@@ -82,7 +82,7 @@ const UserReport = () => {
 
       <div className="mb-4">
         <label className="block font-semibold mb-2">Select Date Range</label>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -97,7 +97,7 @@ const UserReport = () => {
           />
         </div>
       </div>
-      <div className="flex space-x-4 mb-4">
+      <div className="flex space-x-4 mb-4 flex-wrap space-y-4" >
         {['All', 'Pending', 'Accepted', 'Rejected'].map((tab) => (
           <button
             key={tab}
@@ -111,26 +111,26 @@ const UserReport = () => {
 
       <button
         onClick={handleGenerateReport}
-        className="bg-blue-500 dark:bg-blue-700 text-white px-4 py-2 rounded-md mr-4"
+        className="bg-blue-500 dark:bg-blue-900 text-white px-4 py-2 rounded-md mr-4 mb-3"
       >
         Generate Report
       </button>
       <button
         onClick={handleDownloadPDF}
-        className="bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded-md mr-4"
+        className="bg-green-500 dark:bg-green-900 text-white px-4 py-2 rounded-md mr-4 mb-3"
       >
         Download PDF
       </button>
       <button
         onClick={handlePrint}
-        className="bg-yellow-500 dark:bg-yellow-700 text-white px-4 py-2 rounded-md"
+        className="bg-yellow-500 dark:bg-yellow-900 text-white px-4 py-2 rounded-md mb-3"
       >
         Print Report
       </button>
 
       {tabUsers.length > 0 && (
         <div className="overflow-x-auto mt-4">
-  <table className="min-w-full bg-white border border-icons ">
+  <table className="min-w-full bg-white dark:text-text dark:bg-cardDark border border-icons ">
     <thead>
       <tr className="bg-gray-700 text-text text-left ">
         <th className="py-2 px-4 border-b">User</th>
@@ -141,7 +141,7 @@ const UserReport = () => {
     </thead>
     <tbody>
       {tabUsers.map((user) => (
-        <tr key={user.id} className="hover:bg-gray-100">
+        <tr key={user.id} className="hover:bg-gray-100 dark:hover:bg-slate-500">
           <td className="py-2 px-4 border-b">{user.userName}</td>
           <td className="py-2 px-4 border-b">{user.name}</td>
           <td className="py-2 px-4 border-b">

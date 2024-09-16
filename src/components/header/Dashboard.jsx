@@ -38,7 +38,7 @@ function Dashboard() {
   return (
     <div className="flex bg-text dark:bg-slate-950 ">
       {/* Sidebar */}
-      <div className={`bg-gray-800 dark:bg-slate-900  ${isExpanded ? 'md:w-64' : 'md:w-16'} max-md:w-16 transition-width duration-300 h-auto`}>
+      <div className={`bg-bgSidebar dark:bg-bgSidebarDark  ${isExpanded ? 'md:w-64' : 'md:w-16'} max-md:w-16 transition-width duration-300 h-auto`}>
       
         <button
           className="text-white p-4 focus:outline-none max-md:hidden"

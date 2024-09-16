@@ -128,7 +128,7 @@ const RegisterHostel = () => {
     name="name"
     value={hostel.name}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1 "
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1 "
   />
 </div>
 <div className='w-[90%] max-md:mx-auto lg:w-[60%]'>
@@ -138,13 +138,13 @@ const RegisterHostel = () => {
     name="location"
     value={hostel.location}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 </div>
 
 {/** Beds Bathrooms price */}
-<div className='flex flex-wrap justify-between items-center'>
+<div className='flex flex-wrap justify-between items-center dark:text-text  '>
 <div className='max-md:flex max-md:items-center max-md:w-[90%] max-md:mx-auto'>
   <label className="block text-gray-700 max-md:w-[30%] dark:text-neutral-200 "><span className='max-md:hidden'>Number</span> <span className='md:hidden'>No</span> of Beds</label>
   <input
@@ -152,7 +152,7 @@ const RegisterHostel = () => {
     name="beds"
     value={hostel.beds}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1 max-md:w-[65%]"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1 max-md:w-[65%]"
   />
 </div>
 
@@ -220,7 +220,7 @@ const RegisterHostel = () => {
     name="price"
     value={hostel.price}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1 max-md:w-[60%]"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1 max-md:w-[60%]"
   />
 </div>
 
@@ -231,7 +231,7 @@ const RegisterHostel = () => {
     name="description"
     value={hostel.description}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 
@@ -244,7 +244,7 @@ const RegisterHostel = () => {
     name="images"
     multiple
     onChange={handleFileChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
@@ -253,7 +253,7 @@ const RegisterHostel = () => {
     type="file"
     name="video"
     onChange={handleFileChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
@@ -263,7 +263,7 @@ const RegisterHostel = () => {
     name="contact"
     value={hostel.contact}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 </div>
@@ -276,7 +276,7 @@ const RegisterHostel = () => {
     name="booking"
     value={hostel.booking}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 <div className='max-md:w-[90%] max-md:mx-auto my-3'>
@@ -286,7 +286,7 @@ const RegisterHostel = () => {
     name="instruction"
     value={hostel.instruction}
     onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded mt-1"
+    className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
   />
 </div>
 <div className="flex space-x-4 max-md:w-[90%] max-md:mx-auto my-3">
@@ -297,7 +297,7 @@ const RegisterHostel = () => {
               name="lat"
               value={hostel.lat}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
             />
           </div>
           <div>
@@ -307,15 +307,15 @@ const RegisterHostel = () => {
               name="lng"
               value={hostel.lng}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="w-full p-2 border border-icons dark:bg-bgInputsDark dark:text-white rounded mt-1"
             />
           </div>
         </div>
 
-<div className='flex flex-wrap justify-between items-center'>
-<div className='max-md:w-[90%] max-md:mx-auto my-3'>
+<div className='flex flex-wrap justify-between items-center dark:text-text  '>
+<div className='max-md:w-[90%] max-md:mx-auto my-3 '>
   <label className="block text-gray-700 dark:text-neutral-200">Mosque</label>
-  <div className="flex space-x-4">
+  <div className="flex space-x-4 ">
     <label>
       <input
         type="radio"
@@ -323,7 +323,7 @@ const RegisterHostel = () => {
         value="available"
         checked={hostel.mosque === 'available'}
         onChange={handleChange}
-        className="mr-2"
+        className="mr-2 "
       />
       Available
     </label>

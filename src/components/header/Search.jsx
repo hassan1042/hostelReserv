@@ -26,12 +26,12 @@ function Search() {
                 ? 'Min number of beds' 
                 : 'Search by address'
               }
-              className="p-2 rounded max-lg:w-[87%] dark:text-white dark:bg-gray-700 border border-icons focus:border-iconsDark focus:outline-none"
+              className="p-2 rounded max-lg:w-[87%] dark:text-white dark:bg-bgInputsDark border border-icons focus:border-iconsDark focus:outline-none"
             />
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value)}
-              className="p-2 rounded ml-2 max-lg:w-[70%] dark:text-white dark:bg-gray-700 border border-icons focus:outline-none"
+              className="p-2 rounded ml-2 max-lg:w-[70%] dark:text-white dark:bg-bgInputsDark border border-icons focus:outline-none"
             >
               <option value="name">Name</option>
               <option value="beds">Number of Beds</option>

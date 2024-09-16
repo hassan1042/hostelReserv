@@ -40,7 +40,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`bg-gray-800 dark:bg-[#1e1e1e] p-4 text-black dark:text-black  ${headerSticky ? 'fixed top-0 ' : ''} z-50 w-full`}>
+    <nav className={`bg-bgUI dark:bg-bgUIDark p-4 text-black dark:text-black  ${headerSticky ? 'fixed top-0 ' : ''} z-50 w-full`}>
       <div className="container mx-auto flex justify-between max-lg:flex-col lg:items-center">
         <NavLink to="/" className="text-white text-lg font-bold">Hostel Reservation</NavLink>
         <div className="flex items-center max-lg:justify-end">
@@ -48,17 +48,17 @@ const Navbar = () => {
          <div className={`lg:flex   items-center ${ !showMenu ? 'hidden' : 'flex flex-col space-y-4 justify-between py-10 w-full h-auto' } lg:space-x-8`}>
         <Search/>
           {/* <NavLink to="/" className="text-white mx-2">Home</NavLink> */}
-          <NavLink to="/register-hostel" className= "text-text mx-2 hover:text-hov ">Register your Hostel</NavLink>
-          <NavLink to="/dashboard" className="text-text   hover:text-hov mx-2 ">Dashboard</NavLink>
+          <NavLink to="/register-hostel" className= "text-text mx-2 hover:text-hovLinks ">Register your Hostel</NavLink>
+          <NavLink to="/dashboard" className="text-text   hover:text-hovLinks mx-2 ">Dashboard</NavLink>
           {
             currentUser && 
-          <NavLink to="/messages" className="text-text   hover:text-hov mx-2 ">Messages</NavLink>
+          <NavLink to="/messages" className="text-text   hover:text-hovLinks mx-2 ">Messages</NavLink>
 
           }
           {user && (
             <button
               onClick={handleLogout}
-              className="text-text   hover:text-hov mx-2"
+              className="text-text   hover:text-hovLinks mx-2"
             >
               Logout
             </button>
@@ -73,7 +73,7 @@ const Navbar = () => {
   <DarkMode/>
         </div>
          </div>
-          <div className={`absolute right-5 top-5 text-2xl text-white lg:hidden`} onClick={handleMenu}>
+          <div className={`absolute right-5 top-5 text-2xl text-white lg:hidden hover:text-hovLinks`} onClick={handleMenu}>
       <FaBars />
       </div>
         </div>

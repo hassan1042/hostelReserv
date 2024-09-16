@@ -37,14 +37,14 @@ const ChatMessageInput = ({ chatId, userId, ownerId, hostelId, hostelName, sende
     <div className="flex items-center space-x-2 mt-4">
       <input
         type="text"
-        className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-icons dark:bg-bgInputsDark dark:text-text"
         placeholder="Type your message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
       <button
         onClick={handleSendMessage}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-800 transition"
       >
         Send
       </button>
