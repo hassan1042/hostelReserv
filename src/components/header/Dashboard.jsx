@@ -66,7 +66,7 @@ function Dashboard() {
             onClick={() => setActiveTab('favorites')}
           >
             <FaHeart className="text-lg" />
-            {isExpanded && <span className="ml-4 max-md:hidden">Favorite Hostels</span>}
+            {isExpanded && <span className="ml-4 max-md:hidden">Favourite Hostels</span>}
           </button>
           <button
             className={`flex items-center p-4 text-white w-full ${activeTab === 'hostels-history' ? 'bg-blue-600' : ''}`}

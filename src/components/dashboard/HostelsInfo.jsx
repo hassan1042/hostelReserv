@@ -56,7 +56,7 @@ const HostelsInfo = () => {
         <p>Loading...</p>
       ) : (
         <table className="w-full bg-text dark:bg-cardDark dark:text-text shadow-md rounded-lg overflow-auto">
-          <thead className="bg-bgUI dark:bg-bgUIDark">
+          <thead className="bg-bgUI dark:bg-bgUIDark text-text">
             <tr>
               <th className="p-2 lg:p-4 text-left"><span className='max-lg:hidden'>Hostel Name</span> <span className='lg:hidden'>Name</span></th>
               <th className="p-2 lg:p-4 text-left max-lg:hidden"><span className='max-lg:hidden'>Location</span> <span className='lg:hidden'>Loc</span></th>

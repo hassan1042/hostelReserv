@@ -28,19 +28,20 @@ const BookingHistory = () => {
   return (
     <div className="container mx-auto my-10 min-h-screen dark:text-text">
       <h1 className="text-2xl font-bold mb-4">Your Booking History</h1>
-      {bookings.length > 0 ? (
-  <div className="space-y-6">
+ <div className='flex justify-around items-center flex-wrap'>
+ {bookings.length > 0 ? (
+  <div className="space-y-6 flex flex-wrap justify-around items-center space-x-8 ">
     {bookings.map((booking) => (
-      <div key={booking.id} className="bg-text dark:bg-cardDark  shadow-md rounded-lg p-6 border border-gray-200">
-        <h3 className="text-xl font-semibold mb-2 text-slate-400 dark:text-slate-200">{booking.name}</h3>
+      <div key={booking.id} className="bg-gray-300 dark:bg-cardDark  shadow-lg rounded-lg p-6 border border-icons">
+        <h3 className="text-xl font-semibold mb-2 text-slate-700 dark:text-slate-200">{booking.name}</h3>
 
         {booking.bookingDate ? (
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 my-2">
             <span className="font-medium">Booking Date:</span>{' '}
             {new Date(booking.bookingDate.seconds * 1000).toLocaleDateString()}
           </p>
         ) : (
-          <p className="text-gray-500 dark:text-gray-200">Booking Date: Not available</p>
+          <p className="text-gray-500 dark:text-gray-200 ">Booking Date: Not available</p>
         )}
 
         <p className="text-gray-600 dark:text-gray-300">
@@ -63,6 +64,7 @@ const BookingHistory = () => {
 ) : (
   <p className="text-gray-500 dark:text-gray-200">You haven't made any bookings yet.</p>
 )}
+ </div>
 
     </div>
   );

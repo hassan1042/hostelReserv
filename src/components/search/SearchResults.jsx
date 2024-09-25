@@ -4,7 +4,7 @@ import { fetchHostels } from '../../services/hostelSearchService';
 import { useHostel } from '../../contexts/HostelContext';
 import { useNavigate } from 'react-router-dom';
 import { FaBath, FaBed, FaMapMarkerAlt } from 'react-icons/fa';
-
+import CardSliderless from '../common/CardSliderless';
 const SearchResults = () => {
   const { searchTerm, filterType, searchResults, setSearchResults } = useSearch();
   const { selectHostel } = useHostel();
@@ -28,44 +28,17 @@ const SearchResults = () => {
   }
 
   return (
-    <div className=' container mx-auto'>
+    <div className='  dark:bg-slate-700 dark:text-text'>
       <h1 className='text-center text-xl lg:text-2xl xl:text-3xl py-3 font-bold '>Search Results</h1>
       {searchResults.length > 0 ? (
-        <ul  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {searchResults.map((hostel) => (
-      <div key={hostel.id} className="px-2 hover:-translate-y-[10px] transition-all duration-200 ">
-        <div className="border rounded-lg shadow-lg overflow-hidden cursor-pointer" onClick={() => handleCardClick(hostel)}>
-          {hostel.images && (
-            <img src={hostel.images[0]} alt={hostel.name} className="w-full h-48 object-cover" />
-          )}
-          <div className="p-4">
-          <div className='flex justify-between items-center w-full '>
-          <h3 className="text-xl font-semibold">{hostel.name}</h3>
-          <h2 className="text-xl font-normal">Rs:{hostel.price}</h2>
-
-          </div>
-          <p className='text-gray-600 my-3 text-justify italic'>{hostel.description}</p>
-          {/** loc Bath Bed */}
-        <div className='flex justify-between items-center flex-wrap my-5 text-gray-600 '>
-        <p className="flex justify-start items-center space-x-2">
-            <i><FaMapMarkerAlt/> </i>   <span>{hostel.location}</span>
-            </p>
-            <p className=" flex justify-start items-center space-x-2">
-            <i><FaBed/> </i>   <span>{hostel.beds}</span>
-            </p>
-            <p className=" flex justify-start items-center space-x-2">
-            <i><FaBath/></i>    <span>{hostel.bathroom}</span>
-            </p>
-        </div>
-        <p className='text-red-300 my-3 text-justify font-thin h-8'>Note : {hostel.instruction}</p>
-
-          </div>
-        </div>
+      <div className='flex justify-around items-center flex-wrap'>
+        
+      <CardSliderless hostels={searchResults} />
       </div>
-    ))}
-        </ul>
       ) : (
-        <p>No results found. Try adjusting your search criteria.</p>
+        <div className='min-h-[80vh] grid place-content-center text-3xl'><p>
+        No results found. Try adjusting your search criteria please.
+        </p></div>
       )}
     </div>
   );

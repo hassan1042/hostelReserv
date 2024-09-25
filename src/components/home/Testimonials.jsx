@@ -91,17 +91,17 @@ const Testimonials = () => {
       {/* Modal */}
       {selectedTestimonial && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg w-11/12 max-w-3xl relative">
-            <button onClick={handleCloseModal} className="absolute top-4 right-4 text-gray-600 text-2xl">
+          <div className="bg-white dark:bg-cardDark dark:text-text p-8 rounded-lg w-11/12 max-w-3xl relative">
+            <button onClick={handleCloseModal} className="absolute top-4 right-4  text-icons dark:text-iconsDark text-3xl font-bold">
               &times;
             </button>
             <h3 className="text-2xl font-bold mb-4">Testimonial Details</h3>
             <div className="relative mb-4">
               <FaQuoteLeft className="absolute top-0 left-4  text-4xl text-icons dark:text-iconsDark" />
-              <p className="text-xl text-gray-700 mx-8 text-center">{selectedTestimonial.message}</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 mx-8 text-center px-4">{selectedTestimonial.message}</p>
               <FaQuoteRight className="absolute bottom-0 right-4  text-4xl text-icons dark:text-iconsDark" />
             </div>
-            <p className="text-gray-600 font-semibold">- {selectedTestimonial.username}</p>
+            <p className="text-gray-600 dark:text-gray-400 font-semibold">- {selectedTestimonial.username}</p>
             <p className="text-gray-400 text-sm">{new Date(selectedTestimonial.dateOfStay).toLocaleDateString()}</p>
           </div>
         </div>

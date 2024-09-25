@@ -105,12 +105,12 @@ const Notifications = () => {
           className={`text-2xl cursor-pointer hover:text-hov ${notifications.length > 0 ? 'text-yellow-500' : 'text-text'} hover:text-hovLinks`}
         />
         {showNotifications && (
-          <div className="absolute right-0 mt-2 w-[20rem] md:w-[30rem] bg-white text-black p-4 pb-10 z-50 rounded shadow-lg">
-            <h2 className="text-lg font-bold mb-2">Notifications</h2>
+          <div className="absolute max-[220px]:-right-24 max-[290px]:-right-32 max-sm:-right-28 right-0 mt-2 max-sm:mt-5 min-[200px]:w-[13rem]  min-[230px]:w-[14rem] min-[260px]:w-[17rem] min-[345px]:w-[20rem] md:w-[30rem] bg-white dark:bg-cardDark dark:text-text text-black p-4 pb-10 z-50 rounded shadow-lg">
+            <h2 className="text-sm md:text-lg font-bold mb-2">Notifications</h2>
             <ul>
               {notifications && notifications.map((notification) => (
                 <li key={notification.id} className="flex justify-between items-center mb-2 w-full border-y-[1px] border-y-gray-600 py-3">
-                  <span className="text-sm">{notification.message}</span>
+                  <span className="text-[10px] sm:text-sm">{notification.message}</span>
                   <div className="flex space-x-2">
                     <FaCheck
                       onClick={() => handleAcceptBooking(notification.bookingId, notification)}

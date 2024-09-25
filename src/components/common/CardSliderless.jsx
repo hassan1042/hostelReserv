@@ -25,9 +25,9 @@ const handleCardClick = (hostel) => {
             <h2 className="text-xl font-normal">Rs:{hostel.price}</h2>
   
             </div>
-            <p className='text-gray-600 my-3 text-justify italic h-16 overflow-hidden'>{hostel.description}</p>
+            <p className='text-gray-600 dark:text-gray-200 my-3 text-justify italic h-16 overflow-hidden'>{hostel.description}</p>
             {/** loc Bath Bed */}
-          <div className='flex justify-between items-center flex-wrap my-5 text-gray-600 '>
+          <div className='flex justify-between items-center flex-wrap my-5 text-gray-600 dark:text-gray-200 '>
           <p className="flex justify-start items-center space-x-2">
               <i><FaMapMarkerAlt/> </i>   <span>{hostel.location}</span>
               </p>
