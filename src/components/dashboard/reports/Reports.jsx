@@ -6,6 +6,7 @@ import { firestore } from '../../../firebase/Firebase';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import ReportsTable from './ReportsTable';
+import logo from '../../../assets/common/logo.png';
 
 const BookingSummaryReport = () => {
   const [hostels, setHostels] = useState([]);
@@ -67,18 +68,42 @@ const BookingSummaryReport = () => {
 
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
+
+    // Add logo at the top
+    doc.addImage(logo, 'JPEG', 80, 10, 50, 30); // Adjust dimensions and positioning accordingly
+
+    // Add Report Title below the logo
+    doc.setFont("helvetica", "bold"); // Set font style to bold for title
+    doc.setFontSize(18); // Set font size for title
+    doc.text('Booking Summary Report "HostelEase"', 105, 50, { align: 'center' });
+
+    // Set columns for the table
     const tableColumn = ['Hostel', 'Booking Date', 'User', 'Status'];
+
+    // Populate rows for the table
     const tableRows = tabBookings.map((booking) => [
-      booking.name,
-      new Date(booking.bookingDate.seconds * 1000).toLocaleDateString(),
-      booking.userName,
-      booking.status,
+        booking.name,
+        new Date(booking.bookingDate.seconds * 1000).toLocaleDateString(),
+        booking.userName,
+        booking.status,
     ]);
 
-    doc.autoTable(tableColumn, tableRows, { startY: 20 });
-    doc.text('Booking Summary Report', 14, 15);
+    // Insert the table with some margin after the title
+    doc.autoTable(tableColumn, tableRows, { startY: 60 });
+
+    // Get the final Y position after the table (for proper placement of text below)
+    const finalY = doc.lastAutoTable.finalY || 60;
+
+    // Add the "Created and Managed By" statement after the table
+    doc.setTextColor(100); // Optional: Set the text color (gray)
+    doc.setFontSize(12); // Adjust font size
+    doc.setFont("helvetica", "bold"); // Bold font for emphasis
+    doc.text("Created and Managed By: Hassan Fahad & Sajjad Ahmed", 105, finalY + 20, { align: 'center' });
+
+    // Save the generated PDF
     doc.save('booking_summary_report.pdf');
-  };
+};
+
 
   const handleStatusTab = (tabValue) => {
     const tab = tabValue.toLowerCase();
@@ -92,9 +117,48 @@ const BookingSummaryReport = () => {
     }
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
+// Print table function
+const handlePrint = () => {
+  const doc = new jsPDF();
+  
+  // Add logo (replace with actual base64 string or image URL)
+  doc.addImage(logo, 'JPEG', 80, 10, 50, 30); // Adjust dimensions and positioning accordingly
+
+
+  // Add report title and table
+  doc.setFontSize(16);
+  doc.text('Hostel Booking Report "HostelEase" ', 20, 50); // Positioning below the logo
+
+  // Add table with relevant booking data
+  doc.autoTable({
+    startY: 60,
+    head: [["Hostel", "Booking Date", "User", "Status"]],
+    body: tabBookings.map((booking) => [
+      booking.name,
+      new Date(booking.bookingDate.seconds * 1000).toLocaleDateString(),
+      booking.userName,
+      booking.status,
+    ]),
+  });
+
+  // Get the final Y position of the table to place the footer after the table
+  const finalY = doc.lastAutoTable.finalY || 70;
+
+  doc.setTextColor(100); // Optional: Set the text color (gray in this case)
+  doc.setFont("helvetica", "bold"); // Set font style to bold
+  doc.text("Created and Managed By: Hassan Fahad & Sajjad Ahmed", 20, finalY + 30); 
+
+  // Open the PDF in a new window for printing
+  const pdfDataUrl = doc.output('dataurlstring');
+  
+  const printWindow = window.open();
+  if (printWindow) {
+    printWindow.document.write(
+      `<iframe width='100%' height='100%' src='${pdfDataUrl}'></iframe>`
+    );
+    printWindow.document.close();
+  }
+};
 
   return (
     <div className="container mx-auto mt-10 min-h-screen dark:text-text">

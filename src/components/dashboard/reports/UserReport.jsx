@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { firestore } from '../../../firebase/Firebase';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import logo from '../../../assets/common/logo.png';
 
 const UserReport = () => {
   const [users, setUsers] = useState([]);
@@ -48,6 +49,16 @@ const UserReport = () => {
 
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
+  
+    // Add logo (replace with the actual base64 string or image URL)
+    doc.addImage(logo, 'JPEG', 80, 10, 50, 30); // Adjust dimensions and positioning accordingly
+
+  
+    // Add report title below the logo
+    doc.setFontSize(16);
+    doc.text('User Booking Report "HostelEase"', 20, 50); // Position title accordingly
+  
+    // Add table with relevant user data
     const tableColumn = ['User', 'Hostel', 'Booking Date', 'Status'];
     const tableRows = tabUsers.map((user) => [
       user.userName,
@@ -55,11 +66,69 @@ const UserReport = () => {
       new Date(user.bookingDate.seconds * 1000).toLocaleDateString(),
       user.status,
     ]);
-
-    doc.autoTable(tableColumn, tableRows, { startY: 20 });
-    doc.text('User Report', 14, 15);
-    doc.save('user_report.pdf');
+  
+    // Start table after the title
+    doc.autoTable(tableColumn, tableRows, { startY: 60 });
+  
+    // Get the final Y position of the table to place the footer after the table
+    const finalY = doc.lastAutoTable.finalY || 70;
+  
+    // Footer text after the table
+    doc.setTextColor(100); // Optional: Set text color (gray in this case)
+    doc.setFont("helvetica", "bold"); // Set font style to bold
+    doc.text("Created and Managed By: Hassan Fahad & Sajjad Ahmed", 20, finalY + 30);
+  
+    // Save the PDF with a meaningful filename
+    doc.save('user_booking_report.pdf');
   };
+  
+  const handlePrint = () => {
+    const doc = new jsPDF();
+  
+    // Add logo (replace with the actual base64 string or image URL)
+    doc.addImage(logo, 'JPEG', 80, 10, 50, 30); // Adjust dimensions and positioning accordingly
+
+  
+    // Add report title below the logo
+    doc.setFontSize(16);
+    doc.text('User Booking Report "HostelEase"', 20, 50); // Position title accordingly
+  
+    // Add table with relevant user data
+    const tableColumn = ['User', 'Hostel', 'Booking Date', 'Status'];
+    const tableRows = tabUsers.map((user) => [
+      user.userName,
+      user.name,
+      new Date(user.bookingDate.seconds * 1000).toLocaleDateString(),
+      user.status,
+    ]);
+  
+    // Start table after the title
+    doc.autoTable(tableColumn, tableRows, { startY: 60 });
+  
+    // Get the final Y position of the table to place the footer after the table
+    const finalY = doc.lastAutoTable.finalY || 70;
+  
+    // Footer text after the table
+    doc.setTextColor(100); // Optional: Set text color (gray in this case)
+    doc.setFont("helvetica", "bold"); // Set font style to bold
+    doc.text("Created and Managed By: Hassan Fahad & Sajjad Ahmed", 20, finalY + 30);
+  
+    // Open the PDF in a new window for printing
+    const pdfDataUrl = doc.output('dataurlstring');
+    
+    const printWindow = window.open();
+    if (printWindow) {
+      printWindow.document.write(
+        `<iframe width='100%' height='100%' src='${pdfDataUrl}'></iframe>`
+      );
+      printWindow.document.close();
+    }
+  };
+  
+
+
+
+
   const handleStatusTab = (tabValue) => {
     const tab = tabValue.toLowerCase();
     setSelectedTab(tab);
@@ -72,9 +141,7 @@ const UserReport = () => {
     }
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
+
 
   return (
     <div className="container mx-auto mt-10 min-h-screen dark:text-text">
