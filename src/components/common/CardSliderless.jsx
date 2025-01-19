@@ -21,14 +21,14 @@ const handleCardClick = (hostel) => {
             )}
             <div className="p-4">
             <div className='flex justify-between items-center w-full '>
-            <h3 className="text-xl font-semibold">{hostel.name}</h3>
+            <h3 className="text-xl font-semibold capitalize">{hostel.name}</h3>
             <h2 className="text-xl font-normal">Rs:{hostel.price}</h2>
   
             </div>
             <p className='text-gray-600 dark:text-gray-200 my-3 text-justify italic h-16 overflow-hidden'>{hostel.description}</p>
             {/** loc Bath Bed */}
           <div className='flex justify-between items-center flex-wrap my-5 text-gray-600 dark:text-gray-200 '>
-          <p className="flex justify-start items-center space-x-2">
+          <p className="flex justify-start items-center space-x-2 capitalize">
               <i><FaMapMarkerAlt/> </i>   <span>{hostel.location}</span>
               </p>
               <p className=" flex justify-start items-center space-x-2">

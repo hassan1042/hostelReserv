@@ -1,78 +1,67 @@
-import React, { useEffect, useState } from 'react'
-import { useAuth } from '../../../contexts/AuthContext';
-import { firestore } from '../../../firebase/Firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
+import { firestore } from "../../../firebase/Firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import VoucherCard from "../common/VoucherCard";
+import { CiSearch } from 'react-icons/ci';
+
 
 function HostelHistory() {
   const { currentUser } = useAuth();
-  const [ hostels , setHostels] = useState([]);
+  const [hostels, setHostels] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const fetchBookings = async () => {
+      if (currentUser) {
+        const bookingsRef = collection(firestore, "bookings");
+        const q = query(bookingsRef, where("ownerId", "==", currentUser.uid));
+        const querySnapshot = await getDocs(q);
+        const hostelsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setHostels(hostelsData);
+        setUsers(hostelsData);
+      }
+    };
 
-    useEffect(() => {
-        const fetchBookings = async () => {
-          if (currentUser) {
-            const bookingsRef = collection(firestore, 'bookings');
-            const q = query(bookingsRef, where('ownerId', '==', currentUser.uid));
-            const querySnapshot = await getDocs(q);
-            const hostelsData = querySnapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-            setHostels(hostelsData);
-          }
-        };
-    
-        fetchBookings();
-      }, [currentUser]);
-    
+    fetchBookings();
+  }, [currentUser]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      const searchedUser = users.filter((user) => user.userName === searchTerm);
+      setHostels(searchedUser);
+    }
+  };
+
   return (
     <div className="container mx-auto my-10 min-h-screen dark:text-text">
-    <h1 className="text-2xl font-bold mb-4">Your Hostels History</h1>
-    {hostels.length > 0 ? (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {hostels.map((hostel) => (
-      <div key={hostel.id} className="bg-white dark:bg-bgPrimaryDark shadow-lg rounded-lg p-6 border border-iconsDark">
-        <h3 className="text-xl font-bold mb-3 italic text-center"> {hostel.name}</h3>
-
-        {hostel.bookingDate ? (
-          <div className="flex justify-between items-center text-gray-600 dark:text-gray-200 mb-2">
-            <p>
-              <span className="font-semibold">Start Date:</span>{' '}
-              {new Date(hostel.bookingDate.seconds * 1000).toLocaleDateString()}
-            </p>
-            <p>
-              <span className="font-semibold">End Date:</span>{' '}
-              {new Date(hostel.endDate.seconds * 1000).toLocaleDateString()}
-            </p>
-          </div>
-        ) : (
-          <p className="text-gray-500 mb-2">Booking Date: Not available</p>
-        )}
-
-        <p className="text-gray-600 dark:text-gray-300 font-bold capitalize text-center mt-5">
-          <span >Status:</span>{' '}
-          <span
-            className={`px-2 py-1 rounded-lg ${
-              hostel.status === 'accepted'
-                ? 'bg-green-200 text-green-800'
-                : hostel.status === 'rejected'
-                ? 'bg-red-200 text-red-800'
-                : 'bg-yellow-200 text-yellow-800'
-            }`}
-          >
-            {hostel.status}
-          </span>
-        </p>
-      </div>
-    ))}
-  </div>
-) : (
-  <p className="text-gray-500">No hostels available</p>
-)}
-
-  </div>
-  )
+      <h1 className="text-xl max-sm:text-center md:text-2xl font-bold mb-4">Your Hostels History</h1>
+      <form onSubmit={handleSearch}
+      className='mx-auto my-5 relative w-fit'
+       action="">
+        <input
+          type="text"
+          value={searchTerm}
+          className='text-black  py-2 px-4 border rounded-md border-icons focus:border-iconsDark focus:outline-none'
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder='Search for User'
+        />
+        <button
+        className=' absolute top-1 right-2 text-3xl font-bold  cursor-pointer text-black'
+         type="submit"><CiSearch /></button>
+      </form>
+      {hostels.length > 0 ? (
+        <VoucherCard hostels={hostels} />
+      ) : (
+        <p className="text-gray-500 max-sm:px-3 text-justify">No bookings for your hostels available</p>
+      )}
+    </div>
+  );
 }
 
-export default HostelHistory
-
+export default HostelHistory;

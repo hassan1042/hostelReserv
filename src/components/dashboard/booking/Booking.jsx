@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { firestore } from '../../../firebase/Firebase';
+import VoucherCard from '../common/VoucherCard';
+import { CiSearch } from 'react-icons/ci';
+
 
 const BookingHistory = () => {
   const [bookings, setBookings] = useState([]);
   const auth = getAuth();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [hostel, setHostel] = useState([]);
+
   const currentUser = auth.currentUser;
 
   useEffect(() => {
@@ -19,53 +25,50 @@ const BookingHistory = () => {
           ...doc.data(),
         }));
         setBookings(bookingsData);
+        setHostel(bookingsData);
       }
     };
 
     fetchBookings();
   }, [currentUser]);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      const searchedHostel = hostel.filter((hos) => hos.name === searchTerm);
+      setBookings(searchedHostel);
+    }
+  };
+
   return (
     <div className="container mx-auto my-10 min-h-screen dark:text-text">
-      <h1 className="text-2xl font-bold mb-4">Your Booking History</h1>
- <div className='flex justify-around items-center flex-wrap'>
- {bookings.length > 0 ? (
-  <div className="space-y-6 flex flex-wrap justify-around items-center space-x-8 ">
-    {bookings.map((booking) => (
-      <div key={booking.id} className="bg-gray-300 dark:bg-cardDark  shadow-lg rounded-lg p-6 border border-icons">
-        <h3 className="text-xl font-semibold mb-2 text-slate-700 dark:text-slate-200">{booking.name}</h3>
+      <h1 className="text-xl max-sm:text-center md:text-2xl font-bold mb-4">Your Booking History</h1>
+      {/** Form to Search Specific Hostel Booking */}
+      <form onSubmit={handleSearch}
+      className='mx-auto my-5 relative w-fit'
+       action="">
+        <input
+          type="text"
+          value={searchTerm}
+          className='text-black  py-2 px-4 border rounded-md border-icons focus:border-iconsDark focus:outline-none'
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder='Search for Hostel'
+        />
+        <button
+        className=' absolute top-1 right-2 text-3xl font-bold  cursor-pointer text-black'
+         type="submit"><CiSearch /></button>
+      </form>
+      <div className="flex justify-around items-center flex-wrap">
+        {bookings.length > 0 ? (
+        
+        <VoucherCard hostels={bookings} />
 
-        {booking.bookingDate ? (
-          <p className="text-gray-600 dark:text-gray-300 my-2">
-            <span className="font-medium">Booking Date:</span>{' '}
-            {new Date(booking.bookingDate.seconds * 1000).toLocaleDateString()}
-          </p>
         ) : (
-          <p className="text-gray-500 dark:text-gray-200 ">Booking Date: Not available</p>
+          <p className="text-gray-500 dark:text-gray-200">
+            You haven't made any bookings yet.
+          </p>
         )}
-
-        <p className="text-gray-600 dark:text-gray-300">
-          <span className="font-medium">Status:</span>{' '}
-          <span
-            className={`px-2 py-1 rounded-md ${
-              booking.status === 'accepted'
-                ? 'bg-green-200 text-green-700'
-                : booking.status === 'rejected'
-                ? 'bg-red-200 text-red-700'
-                : 'bg-yellow-200 text-yellow-700'
-            }`}
-          >
-            {booking.status}
-          </span>
-        </p>
       </div>
-    ))}
-  </div>
-) : (
-  <p className="text-gray-500 dark:text-gray-200">You haven't made any bookings yet.</p>
-)}
- </div>
-
     </div>
   );
 };

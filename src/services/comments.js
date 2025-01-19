@@ -5,6 +5,7 @@ import { firestore } from '../firebase/Firebase';
 export const addComment = async (hostelId, comment) => {
   const commentsRef = collection(firestore, `hostels/${hostelId}/comments`);
   await addDoc(commentsRef, comment);
+  // alert('comment added');
 };
 
 export const deleteComment = async (hostelId, commentToDelete) => {

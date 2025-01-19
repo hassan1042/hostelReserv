@@ -6,7 +6,8 @@ export const fetchHostels = async (searchTerm, filterType) => {
   const hostels = [];
   let q = collection(firestore, 'hostels');
   if(searchTerm){
-   searchTerm = searchTerm[0].toUpperCase() + searchTerm.substring(1);
+   searchTerm = searchTerm.toLowerCase();
+  //  searchTerm = searchTerm[0].toUpperCase() + searchTerm.substring(1);
   };
 
   if (filterType === 'name' && searchTerm) {

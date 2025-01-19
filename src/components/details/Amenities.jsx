@@ -1,7 +1,8 @@
 import React from 'react';
-import { FaBath, FaBed, FaFootballBall, FaMosque, FaUtensils, FaWifi } from "react-icons/fa";
+import {  FaFootballBall, FaMosque, FaUtensils, FaWifi } from "react-icons/fa";
+import { IoFastFood } from "react-icons/io5";
 
-function Amenities() {
+function Amenities({hostel}) {
 
   const amenities = [
     {
@@ -9,12 +10,8 @@ function Amenities() {
       icon: <FaWifi  />,
     },
     {
-      content: 'beds',
-      icon: <FaBed />,
-    },
-    {
-      content: 'bathroom',
-      icon: <FaBath />,
+      content: 'mess',
+      icon: <IoFastFood />,
     },
     {
       content: 'mosque',
@@ -40,7 +37,9 @@ function Amenities() {
             <p key={i} className="flex justify-start items-center space-x-4 w-[28%] lg:w-[12%] mb-3"
               title={amenity.content} // Tooltip with content value
             >
-              {amenity.icon} <span>{amenity.content === 'available' ? 'Yes' : 'no'}</span>
+              {amenity.icon} <span>
+                  {hostel[amenity.content] === 'available' ? 'Yes' : 'No'}
+             </span>
             </p>
           ))
         }

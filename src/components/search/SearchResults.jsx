@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSearch } from '../../contexts/SearchContext';
 import { fetchHostels } from '../../services/hostelSearchService';
-import { useHostel } from '../../contexts/HostelContext';
-import { useNavigate } from 'react-router-dom';
-import { FaBath, FaBed, FaMapMarkerAlt } from 'react-icons/fa';
 import CardSliderless from '../common/CardSliderless';
 const SearchResults = () => {
   const { searchTerm, filterType, searchResults, setSearchResults } = useSearch();
-  const { selectHostel } = useHostel();
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const getSearchResults = async () => {
@@ -19,10 +15,6 @@ const SearchResults = () => {
     getSearchResults();
   }, [searchTerm, filterType, setSearchResults]);
 
-  const handleCardClick = (hostel) => {
-    selectHostel(hostel);
-    navigate('/hostel-details');
-  };
   if(!searchResults){
     return <p>your hostels are on the way</p>
   }

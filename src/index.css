@@ -5,7 +5,7 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 html{
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 *{
     @apply transition-colors duration-300;

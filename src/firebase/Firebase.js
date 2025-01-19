@@ -2,13 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 import { getFirestore } from 'firebase/firestore';
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBIlrd2wiITYv9k6r8ssEL26uMgxn_Tj9g",
-  authDomain: "hostelreserv-6029f.firebaseapp.com",
-  projectId: "hostelreserv-6029f",
-  storageBucket: "hostelreserv-6029f.appspot.com",
-  messagingSenderId: "242858491052",
-  appId: "1:242858491052:web:7e92034e5a46b1101eb309"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

@@ -61,7 +61,7 @@ const Testimonials = () => {
 
   return (
     <section className="my-10  p-6 ">
-      <h2 className="text-2xl font-bold mb-4  text-textDark dark:text-text">What Our Users Say</h2>
+      <h2 className="text-2xl font-bold mb-4  text-textDark dark:text-text text-center">What Our Users Say</h2>
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <ClipLoader size={50} color={"#123abc"} loading={loading} />
@@ -95,7 +95,7 @@ const Testimonials = () => {
             <button onClick={handleCloseModal} className="absolute top-4 right-4  text-icons dark:text-iconsDark text-3xl font-bold">
               &times;
             </button>
-            <h3 className="text-2xl font-bold mb-4">Testimonial Details</h3>
+            <h3 className="text-2xl font-bold mb-4 ">Testimonial Details</h3>
             <div className="relative mb-4">
               <FaQuoteLeft className="absolute top-0 left-4  text-4xl text-icons dark:text-iconsDark" />
               <p className="text-xl text-gray-700 dark:text-gray-300 mx-8 text-center px-4">{selectedTestimonial.message}</p>

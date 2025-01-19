@@ -18,7 +18,7 @@ function DarkMode() {
       >
         <FontAwesomeIcon
           icon={darkMode ? faMoon : faSun}
-          className={` dark-mode-icon text-3xl ${darkMode ? 'text-neutral-300' : 'text-yellow-500'} cursor-pointer`}
+          className={` dark-mode-icon text-xl 2xl:text-2xl ${darkMode ? 'text-neutral-300' : 'text-yellow-500'} cursor-pointer`}
         />
       </div>
     </div>

@@ -5,7 +5,8 @@ import { firestore } from '../../firebase/Firebase';
 const ChatMessageInput = ({ chatId, userId, ownerId, hostelId, hostelName, senderId , }) => {
   const [message, setMessage] = useState('');
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
     if (message.trim() === '') return; // Don't send empty messages
 
     try {
@@ -23,7 +24,6 @@ const ChatMessageInput = ({ chatId, userId, ownerId, hostelId, hostelName, sende
           senderId: senderId,
           ownerId: ownerId,
           timestamp: { seconds: Math.floor(Date.now() / 1000) }, // Mimicking serverTimestamp
-
         }),
       }, { merge: true });
 
@@ -34,7 +34,7 @@ const ChatMessageInput = ({ chatId, userId, ownerId, hostelId, hostelName, sende
   };
 
   return (
-    <div className="flex items-center space-x-2 mt-4">
+    <form onSubmit={handleSendMessage} className="flex items-center space-x-2 mt-4">
       <input
         type="text"
         className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-icons dark:bg-bgInputsDark dark:text-text"
@@ -43,12 +43,12 @@ const ChatMessageInput = ({ chatId, userId, ownerId, hostelId, hostelName, sende
         onChange={(e) => setMessage(e.target.value)}
       />
       <button
-        onClick={handleSendMessage}
+        type='submit'
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-800 transition"
       >
         Send
       </button>
-    </div>
+    </form>
   );
 };
 
