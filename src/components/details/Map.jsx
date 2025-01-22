@@ -11,14 +11,7 @@ const DynamicMap = ({ lat, lng }) => {
   return (
     // Make sure the container has a defined height and width
     <div style={{ height: '60vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyBCaiMSHnCM0ofQDepoA2-KIvsFHpgJYvc' }}
-        center={{ lat, lng }}
-        defaultZoom={defaultZoom}
-      >
-        {/* Marker can be placed at the dynamic location */}
-        <Marker lat={lat} lng={lng} text="Hostel Location" />
-      </GoogleMapReact>
+  
     </div>
   );
 };
